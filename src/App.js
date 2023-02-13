@@ -8,6 +8,20 @@ function App() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    let content = <p>Found no movies.</p>;
+
+    if (movies.length > 0) {
+        content = <MoviesList movies={movies} />;
+    }
+
+    if (error) {
+        content = <p>{error}</p>;
+    }
+
+    if (isLoading) {
+        content = <p>Loading...</p>;
+    }
+
     async function fetchMoviesHandler() {
         setIsLoading(true); setError(null);
 
@@ -42,10 +56,7 @@ function App() {
                 <button onClick={fetchMoviesHandler}>Fetch Movies</button>
             </section>
             <section>
-                {error && <p>{error}</p>}
-                {isLoading && <p>Loading...</p>}
-                {!isLoading && movies.length > 0 && <MoviesList movies={movies} />}
-                {!isLoading && movies.length === 0 && <p>Found no movies.</p>}
+                {content}
             </section>
         </React.Fragment>
     );
