@@ -9,7 +9,7 @@ function App() {
     const [error, setError] = useState(null);
 
     async function fetchMoviesHandler() {
-        setIsLoading(true);
+        setIsLoading(true); setError(null);
 
         try {
             const response = await fetch('https://swapi.dev/api/films/');
