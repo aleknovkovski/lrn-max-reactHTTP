@@ -12,6 +12,9 @@ function App() {
 
         try {
             const response = await fetch('https://swapi.dev/api/films/');
+            if (!response.ok) {
+                throw new Error('Something went wrong!');
+            }
             const data = await response.json();
             console.log(data)
             const transformedMovies = data.results.map((movieData) => {
