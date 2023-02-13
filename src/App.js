@@ -20,11 +20,14 @@ function App() {
     ];
 
     const [movies, setMovies] = useState([]);
+    function fetchMoviesHandler() {
+        setMovies(dummyMovies);
+    }
 
     return (
         <React.Fragment>
             <section>
-                <button>Fetch Movies</button>
+                <button onClick={fetchMoviesHandler}>Fetch Movies</button>
             </section>
             <section>
                 <MoviesList movies={movies}/>
