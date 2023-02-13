@@ -6,6 +6,7 @@ import './App.css';
 function App() {
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     async function fetchMoviesHandler() {
         setIsLoading(true);
@@ -31,6 +32,7 @@ function App() {
         }
         catch (err) {
             console.log(err)
+            setError(err.message);
         }
     }
 
@@ -40,6 +42,7 @@ function App() {
                 <button onClick={fetchMoviesHandler}>Fetch Movies</button>
             </section>
             <section>
+                {error && <p>{error}</p>}
                 {isLoading && <p>Loading...</p>}
                 {!isLoading && movies.length > 0 && <MoviesList movies={movies} />}
                 {!isLoading && movies.length === 0 && <p>Found no movies.</p>}
