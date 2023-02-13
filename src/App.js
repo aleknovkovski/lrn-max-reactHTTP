@@ -5,7 +5,9 @@ import './App.css';
 
 function App() {
     const [movies, setMovies] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     function fetchMoviesHandler() {
+        setIsLoading(true);
         fetch('https://swapi.dev/api/films/')
             .then((response) => {
                 return response.json();
@@ -22,6 +24,7 @@ function App() {
                 });
                 console.log(transformedMovies)
                 setMovies(transformedMovies);
+                setIsLoading(false);
             });
     }
 
