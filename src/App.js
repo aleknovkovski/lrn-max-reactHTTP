@@ -36,8 +36,8 @@ function App() {
                     };
                 });
                 console.log(transformedMovies)
+                setMovies(transformedMovies);
             });
-        setMovies(dummyMovies);
     }
 
     return (
