@@ -21,6 +21,13 @@ function App() {
 
     const [movies, setMovies] = useState([]);
     function fetchMoviesHandler() {
+        fetch('https://swapi.dev/api/films/')
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data)
+            });
         setMovies(dummyMovies);
     }
 
